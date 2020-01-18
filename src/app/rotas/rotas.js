@@ -8,14 +8,14 @@ module.exports = (app) => {
                         <meta charset="utf-8">
                     </head>
                     <body>
-                        <h1> Casa do Código </h1>
+                        <h1> PÉROLA TRANÇAS </h1>
                     </body> 
                 </html>
             `
         );
     });
 
-    app.get('/livros', function(req, resp) {
+    app.get('/trancas', function(req, resp) {
         resp.send(
             `
                 <html>
@@ -23,7 +23,7 @@ module.exports = (app) => {
                         <meta charset="utf-8">
                     </head>
                     <body>
-                        <h1> Listagem de livros </h1>
+                        <h1> Listagem de tipos de tranças </h1>
                     </body> 
                 </html>
             `
