@@ -8,7 +8,7 @@ module.exports = (app) => {
                         <meta charset="utf-8">
                     </head>
                     <body>
-                        <h1> PÉROLA TRANÇAS </h1>
+                        <h1> PÉROLA CABELOS AFRO </h1>
                     </body> 
                 </html>
             `
