@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/edabruzzo/perolacabelosafro/issues"
   },
-  "homepage": "https://github.com/edabruzzo/perolacabelosafro#readme"
+  "homepage": "https://github.com/edabruzzo/perolacabelosafro#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
