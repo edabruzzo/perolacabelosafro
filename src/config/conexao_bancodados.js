@@ -1,4 +1,8 @@
-
+/*
+ *
+ * https://devcenter.heroku.com/articles/heroku-postgresql#local-setup
+ *  https://devcenter.heroku.com/articles/getting-started-with-nodejs#provision-a-database
+*/
 const { Pool } = require('pg');
 
 
