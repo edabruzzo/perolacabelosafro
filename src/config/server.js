@@ -1,9 +1,12 @@
-//const cool = require('cool-ascii-faces')
 const express = require('express')
-//const path = require('path')
 const PORT = process.env.PORT || 5000
-
 const rotas = require('../app/rotas/rotas.js');
+
+require('marko/node-require').install();
+require('marko/express');
+
+
+
 
 module.exports = function(){
 
