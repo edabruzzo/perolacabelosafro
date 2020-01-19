@@ -17,8 +17,7 @@
    </head>
    
    <body>
-      <h1>Hello, world!</h1>
-
+      
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src = "https://code.jquery.com/jquery.js"></script>
       
@@ -40,17 +39,16 @@
                 <td>CPF</td>
                 <td>Endereço</td>
             </tr>
-                <tr>
-                <td>1</td>
-                <td>Fulana</td>
-                <td>19</td>
-                <td>(11) 9999-9999</td>
-                <td>facebook.com/fulana</td>
-                <td>instagram.com/fulana</td>
-                <td>999.999.999-99</td>
-                <td>R. tal, n. tal</td>
-
-            </tr>
+      <tr for (cliente in data.clientes)>
+                <td>${cliente.id}</td>
+                <td>${cliente.nome}</td>
+                <td>${cliente.idade}</td>
+                <td>${cliente.telefone}</td>
+                <td>${cliente.facebook}</td>
+                <td>${cliente.instagram}</td>
+                <td>${cliente.cpf}</td>
+                <td>${cliente.endereco}</td>
+        </tr>
         </table> 
     </body> 
 </html>
