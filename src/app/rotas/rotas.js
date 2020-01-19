@@ -26,7 +26,8 @@ module.exports = (app) => {
     try {
       const client = await conexao.connect()
       const resultado = await client.query('SELECT * FROM clientes;');
-	//  const resultados = { 'results': (resultado) ? resultado.rows : null};
+    //  const resultados = { 'results': (resultado) ? resultado.rows : null};
+        console.log(resultado);
         resp.marko(
             
             require('../views/clientes/lista.marko'), 
@@ -40,7 +41,7 @@ module.exports = (app) => {
       client.release();
     } catch (err) {
       console.error(err);
-      res.send("Error " + err);
+      resp.send("Error " + err);
     }
   });
 

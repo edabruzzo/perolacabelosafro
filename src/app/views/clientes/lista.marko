@@ -1,6 +1,6 @@
 <html>
  <head>
-      <title>Bootstrap 101 Template</title>
+      <title>Lista Clientes - Pérola Cabelos Afro</title>
       <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
       
       <!-- Bootstrap -->
@@ -38,6 +38,8 @@
                 <td>Instagram</td>
                 <td>CPF</td>
                 <td>Endereço</td>
+                <td>Situação</td>
+                <td>Data de cadastro</td>
             </tr>
       <tr for (cliente in data.clientes)>
                 <td>${cliente.id}</td>
@@ -48,6 +50,8 @@
                 <td>${cliente.instagram}</td>
                 <td>${cliente.cpf}</td>
                 <td>${cliente.endereco}</td>
+                <td>${cliente.situacao}</td>
+                <td>${cliente.data_cadastro}</td>
         </tr>
         </table> 
     </body> 
