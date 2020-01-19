@@ -16,7 +16,9 @@ module.exports = (app) => {
     });
 
     app.get('/clientes', function(req, resp) {
-        resp.send('../views/clientes/lista.marko');
+        resp.marko(
+            
+            require('../views/clientes/lista.marko'));
     });
 
 }
