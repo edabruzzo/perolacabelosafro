@@ -31,14 +31,6 @@
 <% if(data.length){
 for(var i = 0;i < data.length;i++) { %>
 <tr>
-        nome, idade,whatsapp, facebook,
-        instagram,
-        CPF,
-        data_cadastro,
-        endereco,
-        situacao_regular,
-        email
-      
 <td><%=(i+1)%></td>
 <td><%=data[i].nome%></td>
 <td><%=data[i].idade%></td>
@@ -51,14 +43,14 @@ for(var i = 0;i < data.length;i++) { %>
 <td><%=data[i].situacao_regular%></td>
 <td><%=data[i].email%></td>
 <td>
-<a class="a-inside edit" href="../cliente/edita/<%=data[i].id%>">Edit</a>
+<a class="a-inside edit" href="../cliente/edita/<%=data[i].id%>">Edit</a>|
 <a class="a-inside delete" href="../cliente/delete/<%=data[i].id%>">Delete</a>
 </td>
 </tr>
 <% }
 }else{ %>
 <tr>
-<td colspan="6">No user</td>
+<td colspan="6">Nenhum cliente cadastrado</td>
 </tr>
 <% } %>
 </table>

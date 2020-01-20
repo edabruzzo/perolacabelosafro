@@ -13,6 +13,11 @@ https://mherman.org/blog/postgresql-and-nodejs/
 http://mherman.org/blog/2015/10/22/node-postgres-sequelize/#.Vi7efBNViko
 
 https://www.rithmschool.com/courses/node-express-fundamentals/express-postgres-crud-noe
+https://blog.pagesd.info/2019/10/15/crud-with-express-postgresql-10-steps/
+
+https://www.tgmarinho.com/continuando-api-do-gobarber/
+
+https://medium.com/@kris101/building-appointment-scheduler-app-in-react-and-nodejs-d01f7294a9fd
 */
 
 

@@ -19,7 +19,7 @@ exports.list = function(req, res) {
         console.log(err);
         res.status(400).send(err);
       }
-      res.render("clientes/lista", { title: "Lista de Clientes", data: result.rows });
+      res.render("clientes/lista", { title: "Lista de Clientes", dados: result.rows });
               
     });
   };
@@ -43,7 +43,7 @@ exports.list = function(req, res) {
         console.log(err);
         res.status(400).send(err);
       }
-      res.render("clientes/edita", { title: "Edita Cliente", data: result.rows });
+      res.render("clientes/edita", { title: "Edita Cliente", dados: result.rows });
       
     });
   };
