@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><%=title%></title>
+
+
+</head>
+
+<div class="page-header"><h2><%=title%></h2></div>
+<div class="page-data">
+<div class="data-btn">
++ Adiciona Cliente</button>
+</div>
+<div class="data-table">
+<table class="center">
+<tr>
+<th width="50px">No</th>
+<th>Nome</th>
+<th>Idade</th>
+<th>WhatsApp</th>
+<th>Facebook</th>
+<th>Instagram</th>
+<th>CPF</th>
+<th>Data de Cadastro</th>
+<th>Endereço</th>
+<th>Situação do(a) Cliente - Regular/Irregular</th>
+<th>Email</th>
+<th width="120px">Action</th>
+</tr>
+
+<% if(data.length){
+for(var i = 0;i < data.length;i++) { %>
+<tr>
+        nome, idade,whatsapp, facebook,
+        instagram,
+        CPF,
+        data_cadastro,
+        endereco,
+        situacao_regular,
+        email
+      
+<td><%=(i+1)%></td>
+<td><%=data[i].nome%></td>
+<td><%=data[i].idade%></td>
+<td><%=data[i].whatsapp%></td>
+<td><%=data[i].facebook%></td>
+<td><%=data[i].instagram%></td>
+<td><%=data[i].CPF%></td>
+<td><%=data[i].data_cadastro%></td>
+<td><%=data[i].endereco%></td>
+<td><%=data[i].situacao_regular%></td>
+<td><%=data[i].email%></td>
+<td>
+<a class="a-inside edit" href="../cliente/edita/<%=data[i].id%>">Edit</a>
+<a class="a-inside delete" href="../cliente/delete/<%=data[i].id%>">Delete</a>
+</td>
+</tr>
+<% }
+}else{ %>
+<tr>
+<td colspan="6">No user</td>
+</tr>
+<% } %>
+</table>
+</div>
+</div>
+</body>
+</html>

@@ -10,18 +10,18 @@ https://kb.objectrocket.com/postgresql/nodejs-and-postgresql-crud-example-applic
 
 
 const { Pool } = require('pg');
-
+const connectionString = process.env.DATABASE_URL;
 
 
 module.exports = function(){
 
-
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  //https://stackoverflow.com/questions/54302088/how-to-fix-error-the-server-does-not-support-ssl-connections-when-trying-to-a
-	ssl: false
-});
-
+  console.log(`DATABASE_URL -> ${connectionString}`)
+  const client = new Pool({
+    connectionString: connectionString,
+    //https://stackoverflow.com/questions/54302088/how-to-fix-error-the-server-does-not-support-ssl-connections-when-trying-to-a
+    ssl: false
+  });
+  
 return pool;
 
 }

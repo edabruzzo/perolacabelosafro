@@ -12,7 +12,7 @@ ALTER TABLE clientes_seq
   OWNER TO postgres;
 */
 
-CREATE TABLE clientes
+CREATE TABLE cliente
 (
   --id integer NOT NULL DEFAULT nextval('clientes_seq'::regclass),
   id SERIAL NOT NULL,
@@ -25,21 +25,23 @@ CREATE TABLE clientes
   data_cadastro timestamp,
   endereco varchar(255),
   situacao_regular boolean,
-  CONSTRAINT clientes_pkey PRIMARY KEY (id)
+  email varchar(255),
+  CONSTRAINT cliente_pkey PRIMARY KEY (id)
 )
 WITH (
   OIDS=FALSE
 );
-ALTER TABLE clientes
+ALTER TABLE cliente
   OWNER TO postgres;
 
-INSERT INTO clientes
+INSERT INTO cliente
 (nome, idade,whatsapp, facebook,
   instagram,
   CPF,
   data_cadastro,
   endereco,
-  situacao_regular)
+  situacao_regular,
+  email)
 VALUES(
 --select nextval('clientes_seq'),
 'Fulana',
@@ -50,4 +52,5 @@ VALUES(
 '999.999.999-99',
 now(),
 'R. Tal, n. tal - bairro tal, cidade tal',
-true );
+true,
+'fulana@gmail.com' );

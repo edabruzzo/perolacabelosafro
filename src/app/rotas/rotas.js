@@ -1,49 +1,16 @@
-var conexao = require('../../config/conexao_bancodados.js')();
+var clientesDAO = require('../dao/clientesDAO.js');
 
 
 module.exports = (app) => {
 
+//app.get('/', routes.index)
+app.get('/cliente', clientesDAO.list)
+app.get('/cliente/adiciona', clientesDAO.add)
+app.get('/cliente/deleta/:id', clientesDAO.delete)
+app.get('/cliente/edita/:id', clientesDAO.edit)
+app.post('/cliente/adiciona', clientesDAO.save)
+app.post('/cliente/edita/:id', clientesDAO.update)
 
 
-    app.get('/', function (req, resp) {
-        resp.send(
-            `
-                <html>
-                    <head>
-                        <meta charset="utf-8">
-                    </head>
-                    <body>
-                        <h1> PÉROLA CABELOS AFRO </h1>
-                    </body> 
-                </html>
-            `
-        );
-    });
-
-    //https://devcenter.heroku.com/articles/getting-started-with-nodejs#provision-a-database
-    app.get('/clientes', async (req, resp) => {
-
-
-        const clientesDAO = new clientesDAO(conexao);
-
-
-        try {
-            clientesDAO.listaClientes()
-                .then(clientes =>
-                    resp.marko(
-
-                        require('../views/clientes/lista.marko'),
-                        {
-                            clientes: resultado
-                        }
-
-                    ));
-
-        } catch (err) {
-            console.error(err);
-            resp.send("Error " + err);
-        }
-
-    });
 
 }

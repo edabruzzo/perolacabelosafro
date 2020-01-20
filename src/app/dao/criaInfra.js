@@ -1,12 +1,4 @@
-const { Pool } = require('pg');
-const connectionString = process.env.DATABASE_URL;
-console.log(`DATABASE_URL -> ${connectionString}`)
-const pool = new Pool({
-  connectionString: connectionString,
-  //https://stackoverflow.com/questions/54302088/how-to-fix-error-the-server-does-not-support-ssl-connections-when-trying-to-a
-	ssl: false
-});
-
+const pool = require('../../config/conexao_bancodados.js')();
 
 //const pool = require('../../config/conexao_bancodados.js');
 var fs = require("fs");
