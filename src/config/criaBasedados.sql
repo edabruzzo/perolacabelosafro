@@ -1,4 +1,8 @@
-﻿CREATE SEQUENCE clientes_seq
+﻿--drop table if exists clientes;
+--tdrop sequence if exists clientes_seq;
+
+/*
+CREATE SEQUENCE clientes_seq
   INCREMENT 1
   MINVALUE 1
   MAXVALUE 9223372036854775807
@@ -6,20 +10,21 @@
   CACHE 1;
 ALTER TABLE clientes_seq
   OWNER TO postgres;
-
+*/
 
 CREATE TABLE clientes
 (
-  id integer NOT NULL DEFAULT nextval('clientes_seq'::regclass),
+  --id integer NOT NULL DEFAULT nextval('clientes_seq'::regclass),
+  id SERIAL NOT NULL,
   nome character varying(255) not null,
   idade integer not null,
   whatsapp character varying(15) NOT NULL,
-  facebook varchar(255) not null,
+  facebook varchar(255),
   instagram varchar(255),
   CPF varchar(14),
   data_cadastro timestamp,
-  endereco varchar(255) not null,
-  situacao varchar(1),
+  endereco varchar(255),
+  situacao_regular boolean,
   CONSTRAINT clientes_pkey PRIMARY KEY (id)
 )
 WITH (
@@ -28,13 +33,15 @@ WITH (
 ALTER TABLE clientes
   OWNER TO postgres;
 
-
-/*
-drop table clientes;
-drop sequence clientes_seq;
-
-insert into clientes
-select nextval('clientes_seq'),
+INSERT INTO clientes
+(nome, idade,whatsapp, facebook,
+  instagram,
+  CPF,
+  data_cadastro,
+  endereco,
+  situacao_regular)
+VALUES(
+--select nextval('clientes_seq'),
 'Fulana',
 19,
 '11 9999-9999',
@@ -43,5 +50,4 @@ select nextval('clientes_seq'),
 '999.999.999-99',
 now(),
 'R. Tal, n. tal - bairro tal, cidade tal',
-'R' 
-*/
+true );
