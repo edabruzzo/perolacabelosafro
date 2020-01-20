@@ -14,18 +14,20 @@ const client = new Pool({
 
 
 exports.list = function(req, res) {
-    client.query("SELECT * FROM clientes", function(err, result) {
+    client.query("SELECT * FROM cliente", function(err, result) {
       if (err) {
         console.log(err);
         res.status(400).send(err);
       }
-      res.render("clientes/listar", { title: "Lista de Clientes", data: result.rows });
+      res.render("clientes/lista", { title: "Lista de Clientes", data: result.rows });
+              
     });
   };
 
 
   exports.add = function(req, res) {
-    res.render("cliente/adiciona", { title: "Adiciona Cliente" });
+    res.render("clientes/adiciona", { title: "Adiciona Cliente" });
+    
   };
 
 
@@ -33,7 +35,7 @@ exports.list = function(req, res) {
     // get the Postgres record ID from the request 'params' body
     var id = req.params.id;
   
-    client.query("SELECT * FROM clientes WHERE id=$1", [id], function(
+    client.query("SELECT * FROM cliente WHERE id=$1", [id], function(
       err,
       result
     ) {
@@ -41,7 +43,8 @@ exports.list = function(req, res) {
         console.log(err);
         res.status(400).send(err);
       }
-      res.render("cliente/edit", { title: "Edita Cliente", data: result.rows });
+      res.render("clientes/edita", { title: "Edita Cliente", data: result.rows });
+      
     });
   };
 
@@ -60,6 +63,7 @@ exports.list = function(req, res) {
           console.log("Error. Not Saved! : %s ", err);
         }
         res.redirect("/cliente");
+        
       }
     );
   };
@@ -86,7 +90,7 @@ exports.list = function(req, res) {
     
 
     client.query(
-      "UPDATE employee SET nome= $1, idade= $2,whatsapp=$3, facebook=$4, instagram=$5, "+
+      "UPDATE cliente SET nome= $1, idade= $2,whatsapp=$3, facebook=$4, instagram=$5, "+
       "CPF=$6, data_cadastro=$7, endereco=$8, situacao_regular=$9, email=$10 WHERE id=$11",
       cols,
       function(err, result) {
@@ -94,6 +98,7 @@ exports.list = function(req, res) {
           console.log("Error. Updating : %s ", err);
         }
         res.redirect("/cliente");
+        
       }
     );
   };
@@ -109,5 +114,6 @@ exports.list = function(req, res) {
         console.log("Error deleting : %s ", err);
       }
       res.redirect("/cliente");
+      
     });
   };

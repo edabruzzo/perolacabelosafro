@@ -12,10 +12,11 @@ ALTER TABLE clientes_seq
   OWNER TO postgres;
 */
 
+drop table if exists cliente;
 CREATE TABLE cliente
 (
   --id integer NOT NULL DEFAULT nextval('clientes_seq'::regclass),
-  id SERIAL NOT NULL,
+  id SERIAL PRIMARY KEY,
   nome character varying(255) not null,
   idade integer not null,
   whatsapp character varying(15) NOT NULL,
@@ -26,7 +27,7 @@ CREATE TABLE cliente
   endereco varchar(255),
   situacao_regular boolean,
   email varchar(255),
-  CONSTRAINT cliente_pkey PRIMARY KEY (id)
+--  CONSTRAINT cliente_pkey PRIMARY KEY (id)
 )
 WITH (
   OIDS=FALSE

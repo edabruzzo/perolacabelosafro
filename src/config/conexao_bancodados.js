@@ -6,6 +6,13 @@ https://kb.objectrocket.com/postgresql/nodejs-and-postgresql-crud-example-applic
 https://kb.objectrocket.com/postgresql/nodejs-and-postgresql-crud-example-application-part-2-973
 https://kb.objectrocket.com/postgresql/nodejs-and-postgresql-crud-example-application-part-3-974
 
+importante referencia ! 
+adicionar no futuro Sequelize
+Better manage the database layer by adding an ORM - like Sequelize (check out my follow-up post on Node, Postgres, and Sequelize) - and a means of managing migrations
+https://mherman.org/blog/postgresql-and-nodejs/
+http://mherman.org/blog/2015/10/22/node-postgres-sequelize/#.Vi7efBNViko
+
+https://www.rithmschool.com/courses/node-express-fundamentals/express-postgres-crud-noe
 */
 
 
