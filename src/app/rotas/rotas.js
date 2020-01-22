@@ -50,7 +50,6 @@ app.route('/login')
 */
 
 
-baseControlador.efetuaLogin());
 
 
 }
