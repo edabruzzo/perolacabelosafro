@@ -35,6 +35,9 @@ WITH (
 ALTER TABLE cliente
   OWNER TO postgres;
 
+
+
+
 INSERT INTO cliente
 (nome, idade,whatsapp, facebook,
   instagram,

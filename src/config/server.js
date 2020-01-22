@@ -9,8 +9,6 @@ const path = require('path');
 //require('marko/express');
 
 
-
-
 module.exports = function(){
 
 
@@ -24,6 +22,7 @@ module.exports = function(){
 	app.use(bodyParser.json())
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(express.static(path.join(__dirname, 'public')))
+
 
 
 // Error Handler ===============================================================

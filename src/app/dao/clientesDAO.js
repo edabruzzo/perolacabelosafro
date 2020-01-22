@@ -117,3 +117,38 @@ exports.list = function(req, res) {
       
     });
   };
+
+
+  var insereFulanaSQL = `INSERT INTO cliente
+  (nome, idade,whatsapp, facebook,
+    instagram,
+    CPF,
+    data_cadastro,
+    endereco,
+    situacao_regular,
+    email)
+  VALUES(
+  'Fulana',
+  19,
+  '11 9999-9999',
+  'facebook.com/fulana',
+  'instagram.com/fulana',
+  '999.999.999-99',
+  now(),
+  'R. Tal, n. tal - bairro tal, cidade tal',
+  true,
+  'fulana@gmail.com' );`
+
+  exports.adicionaFulana = function(req, res){
+
+    client.query(insereFulanaSQL, [], function(err, rows) {
+      if (err) {
+        console.log("Erro ao inserir a fulana : %s ", err);
+      }
+      res.redirect("/cliente");
+      
+    });
+
+
+
+  }
