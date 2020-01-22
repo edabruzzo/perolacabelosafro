@@ -4,14 +4,17 @@ const uuid = require('uuid/v4');
 const sessao = require('express-session');
 
 //https://scotch.io/tutorials/easy-node-authentication-facebook
-const passport = require('passport'); 
 var LocalStrategy    = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+const appID = process.env.FACEBOOK_PEROLATRANCAS_APP_ID;
+const appSecret = process.env.FACEBOOK_PEROLATRANCAS_APP_SECRET;
+
+
 
 const usuarioDAO = require('../app/dao/usuarioDAO');
 
 
-module.exports = (app) => {
+module.exports = (app, passport) => {
 
     //configuração da sessão e da autenticação.
     passport.use(new LocalStrategy(
@@ -59,10 +62,6 @@ module.exports = (app) => {
 	}));
 
 
-	app.use(passport.initialize());
-	app.use(passport.session());
-
-
 
 	app.use(function (req, resp, next) {
 		req.passport = passport;
@@ -70,39 +69,19 @@ module.exports = (app) => {
 	});
 
 
-
-
+/*
 //https://scotch.io/tutorials/easy-node-authentication-facebook
+//https://github.com/scotch-io/easy-node-authentication/tree/facebook
     passport.use(new FacebookStrategy({
         //https://developers.facebook.com/apps/2593299147565457/settings/basic/
-        clientID: process.env.FACEBOOK_PEROLATRANCAS_APP_ID,
-        clientSecret: process.env.FACEBOOK_PEROLATRANCAS_APP_SECRET,
+        clientID: appID,
+        clientSecret: appSecret ,
         callbackURL: "http://localhost:5000/auth/facebook/callback"
-      },
-      function(accessToken, refreshToken, profile, done) {
-        User.findOrCreate({ 'facebook.id' : profile.id }, function(err, user) {
-          if (err) { return done(err); 
-        }else{
-                
-            /*
-            // if there is no user found with that facebook id, create them
-                var newUser            = new User();
-
-                // set all of the facebook information in our user model
-                newUser.facebook.id    = profile.id; // set the users facebook id                   
-                newUser.facebook.token = token; // we will save the token that facebook provides to the user                    
-                newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName; // look at the passport user profile to see how names are returned
-                newUser.facebook.email = profile.emails[0].value; // facebook can return multiple emails so we'll take the first
-            */
-
-
-                done(null, user);
-
-        }
-        });
+      },function(token, tokenSecret, profile, done) {
+        done(null, profile);
       }
     ));
-
+*/
 
 };
     

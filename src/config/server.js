@@ -1,9 +1,10 @@
 const express = require('express')
 const PORT = process.env.PORT || 5000
-const rotas = require('../app/rotas/rotas.js');
 const bodyParser = require('body-parser');
 const path = require('path');
+var passport = require('passport');
 const sessaoAutenticacao = require('./sessao-autenticacao');
+var rotas = require('../app/rotas/rotas');
 
 //require('marko/node-require').install();
 //require('marko/express');
@@ -13,8 +14,8 @@ module.exports = function () {
 
 
 	var app = express();
-	rotas(app);
-	sessaoAutenticacao(app);
+	rotas(app, passport);
+	sessaoAutenticacao(app, passport);
 
 	// Set EJS engine as the default engine
 	app.set('view engine', 'ejs');
@@ -30,6 +31,8 @@ module.exports = function () {
 
 //AUTENTICAÇÃO------------------------------------------------------------------------
 
+	app.use(passport.initialize());
+	app.use(passport.session()); // persistent login sessions
 
 
 

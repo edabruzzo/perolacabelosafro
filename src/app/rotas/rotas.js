@@ -2,11 +2,9 @@ var clientesDAO = require('../dao/clientesDAO.js');
 const { check, validationResult } = require('express-validator/check');
 const Cliente = require('../model/cliente.js');
 var cliente = new Cliente();
-const ControladorBase = require('../controladores/baseControlador.js');
-const baseControlador = new ControladorBase();
 
 
-module.exports = (app) => {
+module.exports = (app, passport) => {
 
 //app.get('/', routes.index)
 app.get('/cliente', clientesDAO.list)
@@ -18,12 +16,26 @@ app.post('/cliente/edita/:id', Cliente.validacoes(), clientesDAO.update)
 app.get('/cliente/adicionaFulana', clientesDAO.adicionaFulana)
 
 
-app.route('/login')
-    .get(baseControlador.login())
-    .post(baseControlador.efetuaLogin());
+app.get('/login', function(req, res) {
 
+    res.render('login.ejs',);
+});
 
+app.post('/login', passport.authenticate('local', {
+    successRedirect : '/cliente', // redireciona para a tela de clientes
+    failureRedirect : '/login' // redirect back to the signup page if there is an error
+}));
 
+// route middleware to make sure
+function isLoggedIn(req, res, next) {
+
+	// if user is authenticated in the session, carry on
+	if (req.isAuthenticated())
+		return next();
+
+	// if they aren't redirect them to the home page
+	res.redirect('/');
+}
 
 // Redirect the user to Facebook for authentication.  When complete,
 // Facebook will redirect the user back to the application at
@@ -66,6 +78,13 @@ app.get('/auth/facebook/callback',
 
 */
 
+// =====================================
+	// LOGOUT ==============================
+	// =====================================
+	app.get('/logout', function(req, res) {
+		req.logout();
+		res.redirect('/');
+	});
 
 
 
