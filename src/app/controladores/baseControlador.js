@@ -15,6 +15,7 @@ class ControladorBase{
 
         return function(req, resp) {
 
+            
 
         }
     }
