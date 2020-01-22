@@ -1,17 +1,5 @@
-/*
-*/
-//const client = require('../../config/conexao_bancodados.js')();
 
-
-const { Pool } = require('pg');
-const connectionString = process.env.DATABASE_URL;
-console.log(`DATABASE_URL -> ${connectionString}`)
-const client = new Pool({
-    connectionString: connectionString,
-    //https://stackoverflow.com/questions/54302088/how-to-fix-error-the-server-does-not-support-ssl-connections-when-trying-to-a
-    ssl: false
-  });
-
+const client = require('../../config/conexao_bancodados')();
 
 exports.list = function(req, res) {
     client.query("SELECT * FROM cliente", function(err, result) {
@@ -138,6 +126,41 @@ exports.list = function(req, res) {
   'R. Tal, n. tal - bairro tal, cidade tal',
   true,
   'fulana@gmail.com' );`
+
+
+    var insereUsuariosCriaTabelaUsuario = `CREATE TABLE usuario
+    (
+      --id integer NOT NULL DEFAULT nextval('clientes_seq'::regclass),
+      id_usuario SERIAL PRIMARY KEY,
+      nome character varying(255) not null,
+      email character varying(255) not null,
+      senha character varying(10) not null,
+      privilegioAdm boolean
+    )
+    WITH (
+      OIDS=FALSE
+    );
+    ALTER TABLE usuario
+      OWNER TO postgres;
+    
+    
+    
+    
+    INSERT INTO usuario
+    (nome, email, senha, privilegioAdm)
+    VALUES(
+    'Emmanuel',
+    'emmanuel.oliveira3@gmail.com',
+    '123',
+    true),
+    (
+    'Pérola',
+    'passeiodospoetas@gmail.com',
+    '123',
+    false);
+    `
+
+
 
   exports.adicionaFulana = function(req, res){
 

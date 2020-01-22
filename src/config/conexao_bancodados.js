@@ -28,7 +28,7 @@ const connectionString = process.env.DATABASE_URL;
 module.exports = function(){
 
   console.log(`DATABASE_URL -> ${connectionString}`)
-  const client = new Pool({
+  const pool = new Pool({
     connectionString: connectionString,
     //https://stackoverflow.com/questions/54302088/how-to-fix-error-the-server-does-not-support-ssl-connections-when-trying-to-a
     ssl: false
