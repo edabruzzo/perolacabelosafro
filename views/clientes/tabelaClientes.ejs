@@ -1,0 +1,54 @@
+<div class="page-header"><h2><%=title%></h2></div>
+<!--<div class="page-data">
+<div class="data-table">
+-->
+<div>
+<div>
+<table className="pure-table">
+<tr>
+<th width="50px">Id do Cliente</th>
+<th>Nome</th>
+<th>Data Nascimento</th>
+<th>WhatsApp</th>
+<th>Facebook</th>
+<th>Instagram</th>
+<th>CPF</th>
+<th>Data de Cadastro</th>
+<th>Endereço</th>
+<th>Situação do(a) Cliente - Regular/Irregular</th>
+<th>Email</th>
+<th width="120px">Ação</th>
+</tr>
+
+
+
+<tr>
+
+<% dados.forEach(data => { %>
+<tr>
+<td><%=data.id %></td>
+<td><%=data.nome%></td>
+<td><%=data.dataNascimento%></td>
+<td><%=data.whatsapp%></td>
+<td><%=data.facebook%></td>
+<td><%=data.instagram%></td>
+<td><%=data.CPF%></td>
+<td><%=data.data_cadastro%></td>
+<td><%=data.endereco%></td>
+<td><%=data.situacao_regular%></td>
+<td><%=data.email%></td>
+<td>
+
+
+<td class="d-print-none">
+    <a class="btn btn-sm btn-warning" href="/cliente/edita/<%= data.id %>">Editar</a>
+    <a class="btn btn-sm btn-danger" href="/cliente/deleta/<%= data.id %>">Deletar</a>
+</td>
+
+
+</td>
+</tr>
+<% }) %>
+</table>
+</div>
+</div>

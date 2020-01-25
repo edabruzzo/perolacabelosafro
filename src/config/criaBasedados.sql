@@ -18,7 +18,7 @@ CREATE TABLE cliente
   --id integer NOT NULL DEFAULT nextval('clientes_seq'::regclass),
   id SERIAL PRIMARY KEY,
   nome character varying(255) not null,
-  idade integer not null,
+  dataNascimento timestamp,
   whatsapp character varying(15) NOT NULL,
   facebook varchar(255),
   instagram varchar(255),
@@ -26,7 +26,7 @@ CREATE TABLE cliente
   data_cadastro timestamp,
   endereco varchar(255),
   situacao_regular boolean,
-  email varchar(255),
+  email varchar(255)
 --  CONSTRAINT cliente_pkey PRIMARY KEY (id)
 )
 WITH (
@@ -39,7 +39,7 @@ ALTER TABLE cliente
 
 
 INSERT INTO cliente
-(nome, idade,whatsapp, facebook,
+(nome, dataNascimento,whatsapp, facebook,
   instagram,
   CPF,
   data_cadastro,
@@ -49,7 +49,7 @@ INSERT INTO cliente
 VALUES(
 --select nextval('clientes_seq'),
 'Fulana',
-19,
+'1975-08-30',
 '11 9999-9999',
 'facebook.com/fulana',
 'instagram.com/fulana',
@@ -60,7 +60,7 @@ true,
 'fulana@gmail.com' );
 
 
-
+DROP TABLE IF EXISTS usuario;
 CREATE TABLE usuario
 (
   --id integer NOT NULL DEFAULT nextval('clientes_seq'::regclass),

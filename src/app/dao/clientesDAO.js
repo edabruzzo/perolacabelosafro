@@ -7,14 +7,14 @@ exports.list = function(req, res) {
         console.log(err);
         res.status(400).send(err);
       }
-      res.render("clientes/lista", { title: "Lista de Clientes", dados: result.rows });
+      res.render("clientes/lista.ejs", { title: "Lista de Clientes", dados: result.rows });
               
     });
   };
 
 
   exports.add = function(req, res) {
-    res.render("clientes/adiciona", { title: "Adiciona Cliente" });
+    res.render("clientes/", { title: "Lista Clientes" });
     
   };
 
@@ -38,12 +38,23 @@ exports.list = function(req, res) {
 
 
   exports.save = function(req, res) {
-    var cols = [req.body.name, req.body.address, req.body.email, req.body.phone];
+
+
+    var cols = [req.body.nome, 
+      req.body.dataNascimento, 
+      req.body.whatsapp, 
+      req.body.facebook,
+      req.body.instagram,
+      req.body.CPF,
+      req.body.endereco,
+      req.body.situacao,
+      req.body.email
+    ];
   
     client.query(
       
-"INSERT INTO cliente(nome, idade,whatsapp, facebook, instagram, CPF, data_cadastro, endereco, situacao_regular, email)"+
-" VALUES( $1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING * ;",
+"INSERT INTO cliente(nome, dataNascimento,whatsapp, facebook, instagram, CPF, data_cadastro, endereco, situacao_regular, email)"+
+" VALUES( $1, $2, $3, $4, $5, $6, now(), $7, $8, $9) RETURNING * ;",
 
       cols,
       function(err, result) {
@@ -63,7 +74,7 @@ exports.list = function(req, res) {
     // Postgres table column names go here
     var cols = [
       req.body.nome,
-      req.body.idade,
+      req.body.dataNascimento,
       req.body.whatsapp,
       req.body.facebook,
       req.body.instagram,
@@ -107,8 +118,9 @@ exports.list = function(req, res) {
   };
 
 
-  var insereFulanaSQL = `INSERT INTO cliente
-  (nome, idade,whatsapp, facebook,
+  var insereFulanoSQL = `INSERT INTO cliente
+  (nome, dataNascimento,
+    whatsapp, facebook,
     instagram,
     CPF,
     data_cadastro,
@@ -116,16 +128,16 @@ exports.list = function(req, res) {
     situacao_regular,
     email)
   VALUES(
-  'Fulana',
-  19,
+  'Fulano',
+  '1984-03-09',
   '11 9999-9999',
-  'facebook.com/fulana',
-  'instagram.com/fulana',
+  'facebook.com/fulano',
+  'instagram.com/fulano',
   '999.999.999-99',
   now(),
   'R. Tal, n. tal - bairro tal, cidade tal',
   true,
-  'fulana@gmail.com' );`
+  'fulano@gmail.com' );`
 
 
     var insereUsuariosCriaTabelaUsuario = `CREATE TABLE usuario
@@ -162,11 +174,11 @@ exports.list = function(req, res) {
 
 
 
-  exports.adicionaFulana = function(req, res){
+  exports.adicionaFulano = function(req, res){
 
-    client.query(insereFulanaSQL, [], function(err, rows) {
+    client.query(insereFulanoSQL, [], function(err, rows) {
       if (err) {
-        console.log("Erro ao inserir a fulana : %s ", err);
+        console.log("Erro ao inserir o fulano: %s ", err);
       }
       res.redirect("/cliente");
       

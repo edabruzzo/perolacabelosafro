@@ -1,60 +1,73 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title><%=title%></title>
 
 
-</head>
+<script>
+//https://jqueryui.com/datepicker/
+//https://mdbootstrap.com/docs/jquery/forms/date-picker/   (BOOTSTRAP NÃO FUNCIONOU)
+        $(function(){
 
-<div class="page-header"><h2><%=title%></h2></div>
-<div class="page-data">
-<div class="data-btn">
-+ Adiciona Cliente</button>
+            $('#dataNascimento').datepicker()
+
+
+        })
+        
+        
+        
+</script>
+
+
+<div className="content" id="content">
+    <div className="pure-form pure-form-aligned">
+        <form className="pure-form pure-form-aligned" action="/cliente/adiciona" method="POST">
+            <fieldset>
+                <legend>Cadastro de novo cliente</legend>
+                <div className="pure-control-group">
+                    <label htmlFor="nome">Nome</label>
+                    <input id="nome" type="text" name="nome" value="" />
+                </div>
+                <div class="md-form">
+                    <label for="datepicker">Nascimento</label>
+                    <input placeholder="Selecione a data" type="text" id="dataNascimento" 
+                    class="form-control datepicker">
+                </div>
+                <div className="pure-control-group">
+                    <label htmlFor="nome">WhatsApp</label>
+                    <input id="whatsapp" type="text" name="whatsapp" value="" />
+                </div>
+                <div className="pure-control-group">
+                    <label htmlFor="nome">Facebook</label>
+                    <input id="facebook" type="text" name="facebook" value="" />
+                </div>
+                <div className="pure-control-group">
+                    <label htmlFor="instagram">Instagram</label>
+                    <input id="instagram" type="text" name="instagram" value="" />
+                </div>
+                <div className="pure-control-group">
+                    <label htmlFor="CPF">CPF</label>
+                    <input id="CPF" type="text" name="CPF" value="" />
+                </div>
+                <div className="pure-control-group">
+                    <label htmlFor="endereco">Endereco</label>
+                    <input id="endereco" type="text" name="endereco" value="" />
+                </div>
+
+                <div class="pure-u-1 pure-u-md-1-3">
+                    <label for="situacao">Situação do(a) Cliente</label>
+                    <select id="situacao" class="pure-input-1-2">
+                        <option>Regular</option>
+                        <option>Irregular</option>
+                    </select>
+                </div>
+                <div className="pure-control-group">
+                    <label htmlFor="email">Email</label>
+                    <input id="email" type="email" name="email" value="" />
+                </div>
+                <div className="pure-control-group">
+                    <label></label>
+                    <button type="submit" className="pure-button pure-button-primary">Gravar</button>
+                </div>
+            </fieldset>
+        </form>
+
+    </div>
+
 </div>
-<div class="data-table">
-<table class="center">
-<tr>
-<th width="50px">No</th>
-<th>Nome</th>
-<th>Idade</th>
-<th>WhatsApp</th>
-<th>Facebook</th>
-<th>Instagram</th>
-<th>CPF</th>
-<th>Data de Cadastro</th>
-<th>Endereço</th>
-<th>Situação do(a) Cliente - Regular/Irregular</th>
-<th>Email</th>
-<th width="120px">Action</th>
-</tr>
-
-<% if(data.length){
-for(var i = 0;i < data.length;i++) { %>
-<tr>
-<td><%=(i+1)%></td>
-<td><%=data[i].nome%></td>
-<td><%=data[i].idade%></td>
-<td><%=data[i].whatsapp%></td>
-<td><%=data[i].facebook%></td>
-<td><%=data[i].instagram%></td>
-<td><%=data[i].CPF%></td>
-<td><%=data[i].data_cadastro%></td>
-<td><%=data[i].endereco%></td>
-<td><%=data[i].situacao_regular%></td>
-<td><%=data[i].email%></td>
-<td>
-<a class="a-inside edit" href="../cliente/edita/<%=data[i].id%>">Edit</a>|
-<a class="a-inside delete" href="../cliente/delete/<%=data[i].id%>">Delete</a>
-</td>
-</tr>
-<% }
-}else{ %>
-<tr>
-<td colspan="6">Nenhum cliente cadastrado</td>
-</tr>
-<% } %>
-</table>
-</div>
-</div>
-</body>
-</html>

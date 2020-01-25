@@ -6,73 +6,13 @@
 <%- include("../_header") -%>
 </head>
 
-<div class="page-header"><h2><%=title%></h2></div>
-<div class="page-data">
-<div class="data-table">
-<table class="center">
-<tr>
-<th width="50px">Id do Cliente</th>
-<th>Nome</th>
-<th>Idade</th>
-<th>WhatsApp</th>
-<th>Facebook</th>
-<th>Instagram</th>
-<th>CPF</th>
-<th>Data de Cadastro</th>
-<th>Endereço</th>
-<th>Situação do(a) Cliente - Regular/Irregular</th>
-<th>Email</th>
-<th width="120px">Action</th>
-</tr>
+<%- include("_menu") -%>
 
+<%- include('tabelaClientes') -%>
 
-
-<tr>
-
-<% dados.forEach(data => { %>
-<tr>
-<td><%=data.id %></td>
-<td><%=data.nome%></td>
-<td><%=data.idade%></td>
-<td><%=data.whatsapp%></td>
-<td><%=data.facebook%></td>
-<td><%=data.instagram%></td>
-<td><%=data.CPF%></td>
-<td><%=data.data_cadastro%></td>
-<td><%=data.endereco%></td>
-<td><%=data.situacao_regular%></td>
-<td><%=data.email%></td>
-<td>
-
-
-<td class="d-print-none">
-    <a class="btn btn-sm btn-warning" href="/cliente/edita/<%= data.id %>">Editar</a>
-    <a class="btn btn-sm btn-danger" href="/cliente/deleta/<%= data.id %>">Deletar</a>
-</td>
-
-
-</td>
-</tr>
-<% }) %>
-</table>
+<div>
+<%- include('adiciona') -%>
 </div>
-</div>
-
-
-<!-- Calendar placeholder -->
-<div id="calendar"></div>
-
-
-<script>
-
-        var calendar = new DayPilot.Calendar("calendar");
-        calendar.viewType = "Week";
-        calendar.init();
-      
-</script>
-
-
-
-
+</div> 
 </body>
 </html>

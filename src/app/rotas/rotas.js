@@ -8,12 +8,12 @@ module.exports = (app, passport) => {
 
 //app.get('/', routes.index)
 app.get('/cliente', clientesDAO.list)
-app.get('/cliente/adiciona', Cliente.validacoes(), clientesDAO.add)
+//app.get('/cliente/adiciona', Cliente.validacoes(), clientesDAO.add)
 app.get('/cliente/deleta/:id', clientesDAO.delete)
 app.get('/cliente/edita/:id', clientesDAO.edit)
 app.post('/cliente/adiciona', clientesDAO.save)
 app.post('/cliente/edita/:id', Cliente.validacoes(), clientesDAO.update)
-app.get('/cliente/adicionaFulana', clientesDAO.adicionaFulana)
+app.get('/cliente/adicionaFulano', clientesDAO.adicionaFulano)
 
 
 app.get('/login', function(req, res) {

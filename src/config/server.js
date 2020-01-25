@@ -14,9 +14,7 @@ module.exports = function () {
 
 
 	var app = express();
-	rotas(app, passport);
-	sessaoAutenticacao(app, passport);
-
+	
 	// Set EJS engine as the default engine
 	app.set('view engine', 'ejs');
 	app.set('port', PORT);
@@ -24,9 +22,6 @@ module.exports = function () {
 	app.use(bodyParser.json())
 	app.use(bodyParser.urlencoded({ extended: true }))
 	app.use(express.static(path.join(__dirname, 'public')))
-
-
-
 
 
 //AUTENTICAÇÃO------------------------------------------------------------------------
@@ -38,6 +33,9 @@ module.exports = function () {
 
 
 //-----------------------------------------------------------------------------
+rotas(app, passport);
+sessaoAutenticacao(app, passport);
+
 
 
 
