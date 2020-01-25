@@ -2,7 +2,7 @@
 const client = require('../../config/conexao_bancodados')();
 
 exports.list = function(req, res) {
-    client.query("SELECT * FROM cliente", function(err, result) {
+    client.query("SELECT * FROM cliente ORDER BY data_cadastro DESC", function(err, result) {
       if (err) {
         console.log(err);
         res.status(400).send(err);
@@ -41,8 +41,12 @@ exports.list = function(req, res) {
 
     console.log('DATA_NASCIMENTO -> '+ req.body.dataNascimento);
 
+    console.log(req.body)
+
     var cols = [req.body.nome, 
-      req.body.dataNascimento, 
+      //operador ternário
+      //(!req.body.dataNascimento.lenght) ? 'NULL' : req.body.dataNascimento, 
+     // req.body.dataNascimento,
       req.body.whatsapp, 
       req.body.facebook,
       req.body.instagram,
@@ -51,14 +55,19 @@ exports.list = function(req, res) {
       req.body.situacao,
       req.body.email
     ];
-  
+
+    
+
+
     client.query(
       
-"INSERT INTO cliente(nome, dataNascimento,whatsapp, facebook, instagram, CPF, data_cadastro, endereco, situacao_regular, email)"+
-" VALUES( $1, $2, $3, $4, $5, $6, now(), $7, $8, $9) RETURNING * ;",
+      "INSERT INTO cliente(nome, whatsapp, facebook, instagram, CPF, data_cadastro, endereco, situacao_regular, email) "+
+      "VALUES( $1, $2, $3, $4, $5, now(), $6, $7, $8)", cols
 
-      cols,
+
+      ,
       function(err, result) {
+
         if (err) {
           console.log("Error. Not Saved! : %s ", err);
         }

@@ -2,17 +2,22 @@
 <html>
 
 <head>
-<title><%=title%></title>
-<%- include("../_header") -%>
+        <title>
+                <%=title%>
+        </title>
+        <%- include("../_header") -%>
 </head>
 
 <%- include("_menu") -%>
 
+<div>
+        <%- include('adiciona') -%>
+</div>
+
+
 <%- include('tabelaClientes') -%>
 
-<div>
-<%- include('adiciona') -%>
 </div>
-</div> 
 </body>
+
 </html>
