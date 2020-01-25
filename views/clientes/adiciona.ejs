@@ -1,17 +1,15 @@
-
-
 <script>
-//https://jqueryui.com/datepicker/
-//https://mdbootstrap.com/docs/jquery/forms/date-picker/   (BOOTSTRAP NÃO FUNCIONOU)
-        $(function(){
+    //https://jqueryui.com/datepicker/
+    //https://mdbootstrap.com/docs/jquery/forms/date-picker/   (BOOTSTRAP NÃO FUNCIONOU)
+    $(function () {
 
-            $('#dataNascimento').datepicker()
+        $('#dataNascimento').datepicker(
+            {
+            dateFormat: "yy-mm-dd"
+            }
+        )
 
-
-        })
-        
-        
-        
+    })
 </script>
 
 
@@ -25,9 +23,8 @@
                     <input id="nome" type="text" name="nome" value="" />
                 </div>
                 <div class="md-form">
-                    <label for="datepicker">Nascimento</label>
-                    <input placeholder="Selecione a data" type="text" id="dataNascimento" 
-                    class="form-control datepicker">
+                    <label for="dataNascimento">Nascimento</label>
+                    <input placeholder="Selecione a data" type="text" id="dataNascimento" class="form-control datepicker">
                 </div>
                 <div className="pure-control-group">
                     <label htmlFor="nome">WhatsApp</label>

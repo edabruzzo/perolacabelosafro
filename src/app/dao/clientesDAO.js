@@ -39,6 +39,7 @@ exports.list = function(req, res) {
 
   exports.save = function(req, res) {
 
+    console.log('DATA_NASCIMENTO -> '+ req.body.dataNascimento);
 
     var cols = [req.body.nome, 
       req.body.dataNascimento, 
@@ -89,7 +90,7 @@ exports.list = function(req, res) {
     
 
     client.query(
-      "UPDATE cliente SET nome= $1, idade= $2,whatsapp=$3, facebook=$4, instagram=$5, "+
+      "UPDATE cliente SET nome= $1, dataNascimento= $2,whatsapp=$3, facebook=$4, instagram=$5, "+
       "CPF=$6, data_cadastro=$7, endereco=$8, situacao_regular=$9, email=$10 WHERE id=$11",
       cols,
       function(err, result) {
