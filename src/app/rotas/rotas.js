@@ -6,7 +6,10 @@ var cliente = new Cliente();
 
 module.exports = (app, passport) => {
 
-//app.get('/', routes.index)
+app.get('/', function(req, res) {
+
+  res.render('login.ejs',);
+})
 app.get('/cliente', clientesDAO.list)
 //app.get('/cliente/adiciona', Cliente.validacoes(), clientesDAO.add)
 app.get('/cliente/deleta/:id', clientesDAO.delete)

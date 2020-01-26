@@ -1,54 +1,76 @@
-<div class="page-header"><h2><%=title%></h2></div>
+<div class="page-header">
+    <h2>
+        <%=title%>
+    </h2>
+</div>
 <!--<div class="page-data">
 <div class="data-table">
 -->
 <div>
-<div>
-<table className="pure-table">
-<tr>
-<th width="50px">Id do Cliente</th>
-<th>Nome</th>
-<th>Data Nascimento</th>
-<th>WhatsApp</th>
-<th>Facebook</th>
-<th>Instagram</th>
-<th>CPF</th>
-<th>Data de Cadastro</th>
-<th>Endereço</th>
-<th>Situação do(a) Cliente - Regular/Irregular</th>
-<th>Email</th>
-<th width="120px">Ação</th>
-</tr>
+    <div>
+        <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th class="th-sm">Id do Cliente</th>
+                    <th class="th-sm">Nome</th>
+                    <th class="th-sm">Data Nascimento</th>
+                    <th class="th-sm">WhatsApp</th>
+                    <th class="th-sm">Facebook</th>
+                    <th class="th-sm">Instagram</th>
+                    <th class="th-sm">CPF</th>
+                    <th class="th-sm">Data de Cadastro</th>
+                    <th class="th-sm">Endereço</th>
+                    <th class="th-sm">Situação do(a) Cliente - Regular/Irregular</th>
+                    <th class="th-sm">Email</th>
+                    <th class="th-sm">Ação</th>
+                </tr>
+            </thead>
 
-
-
-<tr>
-
-<% dados.forEach(data => { %>
-<tr>
-<td><%=data.id %></td>
-<td><%=data.nome%></td>
-<td><%=data.dataNascimento%></td>
-<td><%=data.whatsapp%></td>
-<td><%=data.facebook%></td>
-<td><%=data.instagram%></td>
-<td><%=data.CPF%></td>
-<td><%=data.data_cadastro%></td>
-<td><%=data.endereco%></td>
-<td><%=data.situacao_regular%></td>
-<td><%=data.email%></td>
-<td>
-
-
-<td class="d-print-none">
-    <a class="btn btn-sm btn-warning" href="/cliente/edita/<%= data.id %>">Editar</a>
-    <a class="btn btn-sm btn-danger" href="/cliente/deleta/<%= data.id %>">Deletar</a>
-</td>
-
-
-</td>
-</tr>
-<% }) %>
-</table>
-</div>
+            <tbody>
+                 <% dados.forEach(data => { %>
+                <tr>
+                    <td>
+                        <%=data.id %>
+                    </td>
+                    <td>
+                        <%=data.nome%>
+                    </td>
+                    <td>
+                        <%=data.dataNascimento%>
+                    </td>
+                    <td>
+                        <%=data.whatsapp%>
+                    </td>
+                    <td>
+                        <%=data.facebook%>
+                    </td>
+                    <td>
+                        <%=data.instagram%>
+                    </td>
+                    <td>
+                        <%=data.CPF%>
+                    </td>
+                    <td>
+                        <%=data.data_cadastro%>
+                    </td>
+                    <td>
+                        <%=data.endereco%>
+                    </td>
+                    <td>
+                        <%=data.situacao_regular%>
+                    </td>
+                    <td>
+                        <%=data.email%>
+                    </td>
+                    
+                    <td class="d-print-none">
+                        <a class="btn btn-sm btn-warning" href="/cliente/edita/<%= data.id %>">Editar</a>
+                        <a class="btn btn-sm btn-danger" href="/cliente/deleta/<%= data.id %>">Deletar</a>
+                    </td>
+                    
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
 </div>

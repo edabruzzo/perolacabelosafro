@@ -24,6 +24,7 @@ module.exports = function () {
 	app.use(express.static(path.join(__dirname, 'public')))
 
 
+
 //AUTENTICAÇÃO------------------------------------------------------------------------
 
 	app.use(passport.initialize());
@@ -35,7 +36,6 @@ module.exports = function () {
 //-----------------------------------------------------------------------------
 rotas(app, passport);
 sessaoAutenticacao(app, passport);
-
 
 
 
